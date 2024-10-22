@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Погодные условия</title>
+</head>
+<body>
+    <h1>Проверка погодных условий для путешествий</h1>
+    <form method="POST">
+        <label for="start_city">Начальная точка:</label>
+        <input type="text" id="start_city" name="start_city" required>
+        <br><br>
+        <label for="end_city">Конечная точка:</label>
+        <input type="text" id="end_city" name="end_city" required>
+        <br><br>
+        <button type="submit">Проверить погоду</button>
+    </form>
+
+    {% if start_message and end_message %}
+        <h2>Результаты:</h2>
+        <p>Начальная точка: {{ start_message }}</p>
+        <p>Конечная точка: {{ end_message }}</p>
+    {% endif %}
+
+    {% if error %}
+        <p style="color: red;">{{ error }}</p>
+    {% endif %}
+</body>
+</html>
