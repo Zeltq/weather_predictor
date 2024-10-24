@@ -21,7 +21,7 @@ def get_location_key_by_city(city: str, api_key: str) -> str:
     location_response = requests.get(location_url)
 
     if location_response.status_code != 200:
-        raise Exception(f"Ошибка при получении ключа местоположения: {location_response.json()}")
+        raise Exception(f"Ошибка при получении ключа местоположения: {location_response.json()['Message']}")
 
     location_data = location_response.json()
     if not location_data:
@@ -39,7 +39,7 @@ def get_location_key_by_lat_lon(lat: str, lon: str,  api_key: str) -> str:
     location_response = requests.get(location_url)
 
     if location_response.status_code != 200:
-        raise Exception(f"Ошибка при получении ключа местоположения: {location_response.json()}")
+        raise Exception(f"Ошибка при получении ключа местоположения: {location_response.json()['Message']}")
 
     location_data = location_response.json()
     if not location_data:
@@ -60,7 +60,7 @@ def get_current_weather(location_key: str, api_key: str) -> str:
     weather_response = requests.get(weather_url)
 
     if weather_response.status_code != 200:
-        raise Exception(f"Ошибка при получении данных о погоде: {weather_response.json()}")
+        raise Exception(f"Ошибка при получении данных о погоде: {weather_response.json()['Message']}")
 
     weather_data = weather_response.json() # Преобразуем в json для удобной дальнейшей работы
 
@@ -90,7 +90,7 @@ def get_daily_forecast(location_key: str, api_key: str) -> str:
     weather_response = requests.get(weather_url)
 
     if weather_response.status_code != 200:
-        raise Exception(f"Ошибка при получении данных о погоде: {weather_response.json()}")
+        raise Exception(f"Ошибка при получении данных о погоде: {weather_response.json()['Message']}")
 
     weather_data = weather_response.json() # Преобразуем в json для удобной дальнейшей работы
 
